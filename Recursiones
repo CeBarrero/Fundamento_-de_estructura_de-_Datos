@@ -1,0 +1,71 @@
+import java.io.*;
+
+public class Recursiones {
+	
+	public static int multiplicacion(int n, int x) //Recursión para multiplicar
+	{
+		if (x == 1) 
+			return n;
+		else 
+			return n + multiplicacion(n, x - 1); 
+	}
+	
+	public static int factorial(int x) //Recursión para hallar factorial
+	{
+		if (x == 1) 
+			return 1;
+		else
+			return x * factorial(x - 1);
+	}
+	
+	public static int fibonacci(int x) //Recursión para la sucesión fibonacci
+	{
+		if (x == 0) 
+			return 0;
+		else
+			if(x == 1)
+				return 1;
+			else
+				return fibonacci(x - 1) + fibonacci(x - 2);
+	}
+	
+	public static int pascal(int n, int k) //Recursión para el triángulo de pascal
+	{
+		if (k == 0 || k == n)
+			return 1;
+		else 
+			return pascal(n - 1, k - 1) + pascal(n - 1, k);
+	}
+	
+	public static void main(String[] args) 
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Escritura desde la consola
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); //Lectura desde la consola
+		
+		try //Saber si hay algún error
+    {
+			int n = Integer.parseInt(br.readLine()); //Lectura de dato en integer
+			int x = Integer.parseInt(br.readLine()); //Lectura de dato en integer
+			int k = Integer.parseInt(br.readLine()); //Lectura de dato en integer
+			
+			int result = multiplicacion(n, x); //Datos para la multiplicación
+			bw.write("Multiplicación: " + result + "\n");
+			
+			result = factorial(x); //Datos para hallar el factorial
+			bw.write("Factorial: " + result + "\n");
+			
+			result = fibonacci(x); //Dato para hacer la sucesión fibonacci
+			bw.write("Fibonacci: " + result + "\n");
+			
+			result = pascal(n, k); //Datos para crear el triángulo de pascal
+			bw.write("Pascal: " + result + "\n");
+			
+			bw.flush();
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace(); //Mensaje de error en la linea
+		}
+	}
+
+}
